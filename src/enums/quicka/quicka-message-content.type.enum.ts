@@ -1,0 +1,6 @@
+export enum QuickAMessageContentType {
+    TEXT = "TEXT",
+    POSTBACK_BUTTON = "POSTBACK_BUTTON",
+	WEB_URL_BUTTON = "WEB_URL_BUTTON",
+    QUICK_REPLY = "QUICK_REPLY"
+}

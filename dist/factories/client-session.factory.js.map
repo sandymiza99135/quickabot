@@ -1,0 +1,1 @@
+{"version":3,"file":"client-session.factory.js","sourceRoot":"","sources":["../../src/factories/client-session.factory.ts"],"names":[],"mappings":";;AAAA,+EAAyE;AAEzE,4FAAuF;AACvF,MAAa,oBAAoB;IAC7B,6BAA6B,CAAC,OAA4B,EAAE,IAAY;QACpE,QAAO,OAAO,EAAC;YACX,KAAK,4CAAmB,CAAC,iBAAiB,CAAC,CAAC,OAAO,IAAI,mDAAuB,CAAC,IAAI,CAAC,CAAC;SACxF;QACD,OAAO,IAAI,CAAC;IAChB,CAAC;CACJ;AAPD,oDAOC"}

@@ -1,0 +1,85 @@
+<html>
+  <head>
+    <title>Quicka</title>
+	<style>
+		body{
+			background-image: url("backgr.png");
+            background-color: #cccccc;
+		}
+	
+	
+		.wrapper {
+			text-align: center;
+			
+		}
+
+		button {
+		    cursor: pointer;
+			position: absolute;
+			top: 30%;
+			left:25%;
+			font-size: 50px;
+			border-radius: 12px;
+			background-color: #17a2b8;
+            color: #385898;
+            border: 1px solid;
+            padding: 10px;
+            width: 50%;
+			height:20%;
+            outline: none;
+            margin: auto;
+		}
+    </style>
+  </head>
+  <body>
+		<div class="wrapper">
+				<button onclick="getLocation()" id="geolocButton">Cloturer l'analyse</button>
+		</div>
+		
+		<p id="geoloc"></p>
+		<script>
+
+		var fbId = null;
+		var psid = "<%= psid %>";
+		console.log("\n");
+		console.log("**********************");
+		console.log(psid);
+		console.log("**********************");
+
+		var x = document.getElementById("geoloc");
+		function getLocation() {
+		  if (navigator.geolocation) {
+			navigator.geolocation.getCurrentPosition(showPosition, showError);
+		  } else { 
+			x.innerHTML = "Geolocation is not supported by this browser.";
+		  }
+		}
+		  
+		function showPosition(position) {
+		  var http = new XMLHttpRequest();
+		  var url = 'https://quickadev1.accesbanque.mg/geoloc';
+		  http.open('POST', url, true);
+		  http.setRequestHeader('Content-type', 'application/json');
+		  http.send(JSON.stringify({fbId: psid, lat:position.coords.latitude, lon: position.coords.longitude}));
+		  x.innerHTML = "Latitude: " + position.coords.latitude + 
+		  "<br>Longitude: " + position.coords.longitude;
+		}
+		function showError(error) {
+		  switch(error.code) {
+			case error.PERMISSION_DENIED:
+			  x.innerHTML = "User denied the request for Geolocation."
+			  break;
+			case error.POSITION_UNAVAILABLE:
+			  x.innerHTML = "Location information is unavailable."
+			  break;
+			case error.TIMEOUT:
+			  x.innerHTML = "The request to get user location timed out."
+			  break;
+			case error.UNKNOWN_ERROR:
+			  x.innerHTML = "An unknown error occurred."
+			  break;
+		  }
+		}
+		</script>
+  </body>
+</html>
